@@ -26,41 +26,39 @@ jobs:
         image: selenium/standalone-chrome
         ports:
           - "4445:4444"
-      # And also tidyverse?
+      # And also tidyverse
       tidyverse:
         image: rocker/tidyverse
     # The type of VM that the job will run on
     runs-on: ubuntu-latest
 
-    # Load repo and install R
-    # docker run -d -p 4445:4444 selenium/standalone-chrome
     steps:
     # - uses: docker://selenium/standalone-chrome
     - uses: actions/checkout@master
-    - uses: r-lib/actions/setup-r@v1
-    #- uses: r-lib/actions/setup-r@master
-    # - name: Change mode
-    #   run: 'chmod 777 "/usr/local/lib/R/site-library"'
-    # Set-up R
-    - name: Install packages # https://github.com/r-lib/remotes/issues/536
+    - name: Run Selenium container
+      run: docker run -d -p 4445:4444 selenium/standalone-chrome
+    - name: Run R container
       run: |
-        Rscript -e 'install.packages("RSelenium")'
-        Rscript -e 'install.packages("rvest")'
+        docker run -d -p rocker/tidyverse
+        Rscript 'code/scrape_health.R'
+    
+#  - uses: r-lib/actions/setup-r@v1
+    #- uses: r-lib/actions/setup-r@master
+    # Set-up R
+    # - name: Install packages
+    #   run: |
+    #     Rscript -e 'install.packages("RSelenium")'
+    #     Rscript -e 'install.packages("rvest")'
 #       Rscript -e 'install.packages("RSelenium", lib = "/usr/local/lib/R/site-library")'
       # Rscript -e 'user_lib <- Sys.getenv("R_LIBS_USER"); message("user_lib = ", user_lib); install.packages("RSelenium", lib = user_lib)'
 #R -e 'devtools::install_cran("RSelenium")'
 #        docker run rocker/tidyverse
  
  
- # "/home/runner/work/_temp/Library"
-      
-# sudo Rscript -e 'user_lib <- Sys.getenv("R_LIBS_USER"); message("user_lib = ", user_lib); install.packages("RSelenium", force = FALSE, upgrade = TRUE, lib = user_lib)'
-#        R -e 'install.packages("tidyverse")'
-#        R -e 'install.packages("rvest")'
-        
-    # Run R script
-    - name: Scrape
-      run: Rscript 'code/scrape_health.R'
+# 
+#     # Run R script
+#     - name: Scrape
+#       run: Rscript 'code/scrape_health.R'
 
     # Add new files in data folder, commit along with other modified files, push
     - name: Commit files
