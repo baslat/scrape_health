@@ -19,10 +19,12 @@ on:
 jobs:
   autoscrape:
     # The type of runner that the job will run on
-    runs-on: selenium/standalone-chrome
+    runs-on: ubuntu-latest
 
     # Load repo and install R
+    # docker run -d -p 4445:4444 selenium/standalone-chrome
     steps:
+    - uses: docker://selenium/standalone-chrome
     - uses: actions/checkout@master
     - uses: r-lib/actions/setup-r@master
 
