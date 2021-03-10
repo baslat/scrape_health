@@ -37,7 +37,7 @@ jobs:
     steps:
     # - uses: docker://selenium/standalone-chrome
     - uses: actions/checkout@master
-    - uses: r-lib/actions/setup-r@master
+    #- uses: r-lib/actions/setup-r@master
 
     # Set-up R
     - name: Install packages
@@ -47,7 +47,7 @@ jobs:
         
     # Run R script
     - name: Scrape
-      run: Rscript scrape_health.R
+      run: Rscript 'code/scrape_health.R'
 
     # Add new files in data folder, commit along with other modified files, push
     - name: Commit files
