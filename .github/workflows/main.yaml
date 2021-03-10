@@ -33,9 +33,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # - uses: docker://selenium/standalone-chrome
-    - uses: actions/checkout@master
-      run: sudo chmod 777 /usr/local/lib/R/site-library
+    # # - uses: docker://selenium/standalone-chrome
+    # - uses: actions/checkout@master
+    #   run: sudo chmod 777 /usr/local/lib/R/site-library
     
     - name: Start env
       run: |
