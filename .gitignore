@@ -41,7 +41,6 @@ po/*~
 *.docx
 *.html
 *.pdf
-*.csv
 *.xls
 *.xlsx
 *.ppt

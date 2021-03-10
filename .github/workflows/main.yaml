@@ -1,0 +1,37 @@
+# Hourly scraping
+name: scrape_health
+
+# Controls when the action will run.
+on:
+  schedule:
+    - cron: '* 0 * * *' # every minute https://crontab.guru/#*_0_*_*_*
+
+jobs:
+  autoscrape:
+    # The type of runner that the job will run on
+    runs-on: selenium/standalone-chrome
+
+    # Load repo and install R
+    steps:
+    - uses: actions/checkout@master
+    - uses: r-lib/actions/setup-r@master
+
+    # Set-up R
+    - name: Install packages
+      run: |
+        R -e 'install.packages("tidyverse")'
+    # Run R script
+    - name: Scrape
+      run: Rscript scrape_health.R
+
+    # Add new files in data folder, commit along with other modified files, push
+    - name: Commit files
+      run: |
+        git config --local user.name github-actions
+        git config --local user.email "actions@github.com"
+        git add outputs/*
+        git commit -am "GH ACTION Autorun $(date)"
+        git push origin master
+      env:
+        REPO_KEY: ${{secrets.GITHUB_TOKEN}}
+        username: github-actions

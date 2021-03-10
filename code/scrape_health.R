@@ -94,4 +94,9 @@ scraped_health_data <- list(new, soi, tests) %>%
   dplyr::mutate(reported_date = health_date,
                 scrape_dt = .env$scrape_dt) 
 
+date <- as.character(scrape_dt) %>% 
+  stringr::str_replace_all(pattern = ":|-",
+                           replacement = "_")
 
+readr::write_csv(scraped_health_data,
+                 paste0("outputs/", date, "_scraped_health_data.csv"))
