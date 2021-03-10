@@ -39,7 +39,7 @@ jobs:
 
     # Add new files in data folder, commit along with other modified files, push
     - name: Commit files
-      run: |
+       run: |
         git config --local user.name github-actions
         git config --local user.email "actions@github.com"
         git add outputs/*
