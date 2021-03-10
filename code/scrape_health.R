@@ -39,7 +39,7 @@ tidy_health <- function(.data) {
 
 health <- "https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-ncov-health-alert/coronavirus-covid-19-current-situation-and-case-numbers"
 
-scrape_dt <- Sys.time()
+scrape_dt <- lubridate::now(tzone = "Australia/Sydney")
 
 
 # orig chromever
