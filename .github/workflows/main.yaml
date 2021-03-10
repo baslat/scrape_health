@@ -4,7 +4,7 @@ name: scrape_health
 # Controls when the action will run.
 on:
   schedule:
-    - cron: '* 0 * * *' # every minute https://crontab.guru/#*_0_*_*_*
+    - cron: '* * * * *' # every minute https://crontab.guru/#*_0_*_*_*
 
 jobs:
   autoscrape:
