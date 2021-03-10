@@ -41,7 +41,7 @@ jobs:
 
     # Set-up R
     - name: Install packages # https://github.com/r-lib/remotes/issues/536
-      run: R -e remotes::install_cran("RSelenium")
+      run: R -e 'remotes::install_cran("RSelenium")'
 #        docker run rocker/tidyverse
  
       
