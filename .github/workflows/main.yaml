@@ -35,7 +35,7 @@ jobs:
      - uses: actions/checkout@master
     # Run R script
      - name: Scrape
-        run: Rscript 'code/scrape_health.R'
+       run: Rscript 'code/scrape_health.R'
 
     # Add new files in data folder, commit along with other modified files, push
     - name: Commit files
