@@ -34,10 +34,10 @@ jobs:
     steps: 
      - uses: actions/checkout@master
     # Run R script
+     - name: Install RSelenium
+       run: R -e 'install.packages("RSelenium")'
      - name: Scrape
-       run: |
-         R -e 'install.packages("RSelenium")'
-         Rscript 'code/scrape_health.R'
+       run: Rscript 'code/scrape_health.R'
        working-directory: ./selenium
 
     # # Add new files in data folder, commit along with other modified files, push
