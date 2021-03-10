@@ -35,7 +35,7 @@ jobs:
     steps:
     # - uses: docker://selenium/standalone-chrome
     - uses: actions/checkout@master
-    - bash: sudo chmod 777 /usr/local/lib/R/site-library
+    - run: sudo chmod 777 /usr/local/lib/R/site-library
     # - name: Run Selenium container
     #   run: docker run -d -p 4445:4444 selenium/standalone-chrome
     # - name: Run R container
