@@ -37,8 +37,8 @@ jobs:
      - name: Scrape
        run: |
          R -e 'install.packages("RSelenium")'
-         docker run -d -p 4445:4444 selenium/standalone-chrome
          Rscript 'code/scrape_health.R'
+       working-directory: ./selenium
 
     # # Add new files in data folder, commit along with other modified files, push
     #  - name: Commit files
