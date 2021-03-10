@@ -36,9 +36,9 @@ jobs:
     # Run R script
      - name: Install RSelenium
        run: R -e 'install.packages("RSelenium")'
-     - name: Prepare Selenium
-      # https://github.com/marketplace/actions/setup-chromedriver
-       uses: nanasess/setup-chromedriver@master
+     # - name: Prepare Selenium
+     #  # https://github.com/marketplace/actions/setup-chromedriver
+     #   uses: nanasess/setup-chromedriver@master
      - name: Scrape
        run: Rscript 'code/scrape_health.R'
 
