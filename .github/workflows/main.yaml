@@ -6,6 +6,8 @@ name: scrape_health
 #   schedule:
 #     - cron: '* * * * *' # every minute https://crontab.guru/#*_0_*_*_*
     
+    # "0 9 * * 0-6" every day at 9am
+    
 on:
   push:
     branches:
@@ -18,11 +20,16 @@ on:
 
 jobs:
   autoscrape:
-  # Declare I want a selenium service
+  # Declare I want a selenium container as a service
     services:
       selenium:
         image: selenium/standalone-chrome
-    # The type of runner that the job will run on
+        ports:
+          - "4445:4444"
+      # And also tidyverse?
+      tidyverse:
+        image: rocker/tidyverse
+    # The type of VM that the job will run on
     runs-on: ubuntu-latest
 
     # Load repo and install R
@@ -35,8 +42,8 @@ jobs:
     # Set-up R
     - name: Install packages
       run: |
-        R -e 'install.packages("tidyverse")'
-        R -e 'install.packages("rvest")'
+#        R -e 'install.packages("tidyverse")'
+#        R -e 'install.packages("rvest")'
         R -e 'install.packages("RSelenium")'
     # Run R script
     - name: Scrape

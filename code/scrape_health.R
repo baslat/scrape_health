@@ -10,6 +10,8 @@ library(RSelenium)
 
 # advice:
 # https://callumgwtaylor.github.io/post/using-rselenium-and-docker-to-webscrape-in-r-using-the-who-snake-database/
+# https://github.community/t/how-to-connect-to-a-docker-container/17171/2
+
 
 #' Tidy data scraped from health.gov.au
 #'
