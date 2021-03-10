@@ -24,8 +24,8 @@ jobs:
     services:
       selenium:
         image: selenium/standalone-chrome
-        # ports:
-        #   - "4445:4444"
+        ports:
+          - "4445:4444"
       # And also tidyverse
       tidyverse:
         image: rocker/tidyverse
@@ -35,12 +35,13 @@ jobs:
     steps:
     # - uses: docker://selenium/standalone-chrome
     - uses: actions/checkout@master
-    - name: Run Selenium container
-      run: docker run -d -p 4445:4444 selenium/standalone-chrome
-    - name: Run R container
-      run: |
-        docker run -d -p rocker/tidyverse
-        Rscript 'code/scrape_health.R'
+    - bash: sudo chmod 777 /usr/local/lib/R/site-library
+    # - name: Run Selenium container
+    #   run: docker run -d -p 4445:4444 selenium/standalone-chrome
+    # - name: Run R container
+    #   run: |
+    #     docker run -d -p rocker/tidyverse
+        # Rscript 'code/scrape_health.R'
     
 #  - uses: r-lib/actions/setup-r@v1
     #- uses: r-lib/actions/setup-r@master
@@ -56,9 +57,9 @@ jobs:
  
  
 # 
-#     # Run R script
-#     - name: Scrape
-#       run: Rscript 'code/scrape_health.R'
+    # Run R script
+    - name: Scrape
+      run: Rscript 'code/scrape_health.R'
 
     # Add new files in data folder, commit along with other modified files, push
     - name: Commit files
