@@ -41,9 +41,9 @@ jobs:
 
     # Set-up R
     - name: Install packages # https://github.com/r-lib/remotes/issues/536
-      run: |
-        docker run rocker/tidyverse
-        R -e install.packages("RSelenium")
+      run: R -e remotes::install_cran("RSelenium")
+#        docker run rocker/tidyverse
+ 
       
 # sudo Rscript -e 'user_lib <- Sys.getenv("R_LIBS_USER"); message("user_lib = ", user_lib); install.packages("RSelenium", force = FALSE, upgrade = TRUE, lib = user_lib)'
 #        R -e 'install.packages("tidyverse")'
