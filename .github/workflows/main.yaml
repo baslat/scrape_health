@@ -36,8 +36,6 @@ jobs:
     # Run R script
      - name: Install RSelenium
        run: R -e 'install.packages("RSelenium")'
-     - name: Create outputs
-       run: mkdir outputs
      - name: Scrape
        run: Rscript 'code/scrape_health.R'
 
