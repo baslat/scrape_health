@@ -36,20 +36,19 @@ jobs:
     # Run R script
      - name: Install RSelenium
        run: R -e 'install.packages("RSelenium")'
-     # - name: Prepare Selenium
-     #  # https://github.com/marketplace/actions/setup-chromedriver
-     #   uses: nanasess/setup-chromedriver@master
+     - name: Allow writing
+       run: chmod 777 /outputs
      - name: Scrape
        run: Rscript 'code/scrape_health.R'
 
-    # # Add new files in data folder, commit along with other modified files, push
-    #  - name: Commit files
-    #    run: |
-    #     git config --local user.name github-actions
-    #     git config --local user.email "actions@github.com"
-    #     git add outputs/*
-    #     git commit -am "GH ACTION Autorun $(date)"
-    #     git push origin master
+    # Add new files in data folder, commit along with other modified files, push
+     - name: Commit files
+       run: |
+        git config --local user.name github-actions
+        git config --local user.email "actions@github.com"
+        git add outputs/*
+        git commit -am "GH ACTION Autorun $(date)"
+        git push origin master
     env:
       REPO_KEY: ${{secrets.GITHUB_TOKEN}}
       username: github-actions

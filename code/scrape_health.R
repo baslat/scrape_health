@@ -44,7 +44,7 @@ scrape_dt <- Sys.time()
 
 # orig chromever
 # args = 'datafile where name="C:\\\\Program Files (x86)\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe" get Version /value'
-remote_driver <- RSelenium::remoteDriver(remoteServerAddr = "selenium",
+remote_driver <- RSelenium::remoteDriver(remoteServerAddr = "selenium", # need to set this to the name of the service in docker, ie not localhost
                                          port = 4444L,
                                          browserName = "chrome")
 remote_driver$open()
