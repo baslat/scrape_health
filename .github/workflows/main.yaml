@@ -38,7 +38,6 @@ jobs:
        run: R -e 'install.packages("RSelenium")'
      - name: Scrape
        run: Rscript 'code/scrape_health.R'
-       working-directory: ./selenium
 
     # # Add new files in data folder, commit along with other modified files, push
     #  - name: Commit files
