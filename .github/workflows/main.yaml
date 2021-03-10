@@ -41,7 +41,7 @@ jobs:
 
     # Set-up R
     - name: Install packages # https://github.com/r-lib/remotes/issues/536
-      run: Rscript -e 'user_lib <- Sys.getenv("R_LIBS_USER"); message("user_lib = ", user_lib); instal.packages("RSelenium", lib = user_lib)'
+      run: Rscript -e 'user_lib <- Sys.getenv("R_LIBS_USER"); message("user_lib = ", user_lib); install.packages("RSelenium", lib = user_lib)'
 #R -e 'devtools::install_cran("RSelenium")'
 #        docker run rocker/tidyverse
  
