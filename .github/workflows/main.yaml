@@ -35,7 +35,31 @@ jobs:
     steps:
     # - uses: docker://selenium/standalone-chrome
     - uses: actions/checkout@master
-    - run: sudo chmod 777 /usr/local/lib/R/site-library
+      run: sudo chmod 777 /usr/local/lib/R/site-library
+    
+    - name: Start env
+      run: |
+        docker run selenium/standalone-chrome
+        docker run rocker/tidyverse
+
+# 
+    # Run R script
+    - name: Scrape
+      run: Rscript 'code/scrape_health.R'
+
+    # Add new files in data folder, commit along with other modified files, push
+    - name: Commit files
+      run: |
+        git config --local user.name github-actions
+        git config --local user.email "actions@github.com"
+        git add outputs/*
+        git commit -am "GH ACTION Autorun $(date)"
+        git push origin master
+      env:
+        REPO_KEY: ${{secrets.GITHUB_TOKEN}}
+        username: github-actions
+
+
     # - name: Run Selenium container
     #   run: docker run -d -p 4445:4444 selenium/standalone-chrome
     # - name: Run R container
@@ -56,19 +80,3 @@ jobs:
 #        docker run rocker/tidyverse
  
  
-# 
-    # Run R script
-    - name: Scrape
-      run: Rscript 'code/scrape_health.R'
-
-    # Add new files in data folder, commit along with other modified files, push
-    - name: Commit files
-      run: |
-        git config --local user.name github-actions
-        git config --local user.email "actions@github.com"
-        git add outputs/*
-        git commit -am "GH ACTION Autorun $(date)"
-        git push origin master
-      env:
-        REPO_KEY: ${{secrets.GITHUB_TOKEN}}
-        username: github-actions

@@ -4,8 +4,8 @@
 # cah::setup_pins()
 
 # Add other library calls here
-library(rvest)
 library(tidyverse)
+library(rvest)
 library(RSelenium)
 
 # advice:
