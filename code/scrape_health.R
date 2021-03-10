@@ -45,7 +45,7 @@ scrape_dt <- Sys.time()
 # orig chromever
 # args = 'datafile where name="C:\\\\Program Files (x86)\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe" get Version /value'
 remote_driver <- RSelenium::remoteDriver(remoteServerAddr = "localhost",
-                                 port = 4445L,
+                                 port = 4444L,
                                  browserName = "chrome")
 remote_driver$open()
 
