@@ -38,7 +38,8 @@ jobs:
     # - uses: docker://selenium/standalone-chrome
     - uses: actions/checkout@master
     #- uses: r-lib/actions/setup-r@master
-
+    - name: Change mode
+      run: 'chmod 777 "/usr/local/lib/R/site-library"'
     # Set-up R
     - name: Install packages # https://github.com/r-lib/remotes/issues/536
       run: Rscript -e 'install.packages("RSelenium", lib = "/usr/local/lib/R/site-library")'
