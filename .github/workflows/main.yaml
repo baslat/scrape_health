@@ -45,9 +45,9 @@ jobs:
     #     git add outputs/*
     #     git commit -am "GH ACTION Autorun $(date)"
     #     git push origin master
-      env:
-        REPO_KEY: ${{secrets.GITHUB_TOKEN}}
-        username: github-actions
+    env:
+      REPO_KEY: ${{secrets.GITHUB_TOKEN}}
+      username: github-actions
 
 
     # - name: Run Selenium container
