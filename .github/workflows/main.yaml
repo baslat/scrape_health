@@ -4,7 +4,7 @@ name: scrape_health
 # Controls when the action will run.
 on:
   schedule:
-    - cron: "0 23 * * 0-6" # every day at 10am (2300 UTC)
+    - cron: "*/15 * * * *" # every 15th minute
 
 
     
