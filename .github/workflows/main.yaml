@@ -18,13 +18,17 @@ on:
 
 jobs:
   autoscrape:
+  # Declare I want a selenium service
+    services:
+      selenium:
+        image: selenium/standalone-chrome
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Load repo and install R
     # docker run -d -p 4445:4444 selenium/standalone-chrome
     steps:
-    - uses: docker://selenium/standalone-chrome
+    # - uses: docker://selenium/standalone-chrome
     - uses: actions/checkout@master
     - uses: r-lib/actions/setup-r@master
 
