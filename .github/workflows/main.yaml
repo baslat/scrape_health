@@ -38,7 +38,7 @@ jobs:
        run: Rscript 'code/scrape_health.R'
 
     # Add new files in data folder, commit along with other modified files, push
-    - name: Commit files
+     - name: Commit files
        run: |
         git config --local user.name github-actions
         git config --local user.email "actions@github.com"
