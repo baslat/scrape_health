@@ -19,33 +19,23 @@ on:
       - master
 
 jobs:
-  autoscrape:
+  scrape_health:
+      # The type of VM that the job will run on
+    runs-on: ubuntu-latest
+    container:
+      image: rocker/tidyverse
   # Declare I want a selenium container as a service
     services:
       selenium:
         image: selenium/standalone-chrome
         ports:
           - "4445:4444"
-      # And also tidyverse
-      tidyverse:
-        image: rocker/tidyverse
-    # The type of VM that the job will run on
-    runs-on: ubuntu-latest
 
     steps:
-    # # - uses: docker://selenium/standalone-chrome
-    # - uses: actions/checkout@master
-    #   run: sudo chmod 777 /usr/local/lib/R/site-library
-    
-    - name: Start env
-      run: |
-        docker run selenium/standalone-chrome
-        docker run rocker/tidyverse
-
-# 
+     - uses: actions/checkout@master
     # Run R script
-    - name: Scrape
-      run: Rscript 'code/scrape_health.R'
+     - name: Scrape
+        run: Rscript 'code/scrape_health.R'
 
     # Add new files in data folder, commit along with other modified files, push
     - name: Commit files
