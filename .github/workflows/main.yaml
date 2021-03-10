@@ -1,10 +1,20 @@
-# Hourly scraping
+#  scraping
 name: scrape_health
 
 # Controls when the action will run.
+# on:
+#   schedule:
+#     - cron: '* * * * *' # every minute https://crontab.guru/#*_0_*_*_*
+    
 on:
-  schedule:
-    - cron: '* * * * *' # every minute https://crontab.guru/#*_0_*_*_*
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
 
 jobs:
   autoscrape:
