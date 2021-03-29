@@ -1,0 +1,15 @@
+name,Australia,ACT,NSW,NT,QLD,SA,TAS,VIC,WA,reported_date,scrape_dt
+Locally acquired or Under investigation last 24 hours,4,0,0,0,4,0,0,0,0,NA,2021-03-29T23:19:34Z
+Overseas acquired last 24 hours,14,0,2,0,6,2,0,1,3,NA,2021-03-29T23:19:34Z
+Active cases,153,0,50,2,71,16,0,1,13,NA,2021-03-29T23:19:34Z
+Total cases,29278,123,5283,108,1456,652,234,20484,938,NA,2021-03-29T23:19:34Z
+Total deaths,909,3,54,0,6,4,13,820,9,NA,2021-03-29T23:19:34Z
+Overseas,6904,94,3104,104,1140,465,85,1074,838,NA,2021-03-29T23:19:34Z
+Locally acquired - contact of confirmed case,17940,25,1644,2,249,152,141,15648,79,NA,2021-03-29T23:19:34Z
+Locally acquired - unknown contact,4280,1,445,0,44,9,5,3762,14,NA,2021-03-29T23:19:34Z
+Locally acquired - interstate travel,154,3,90,2,23,26,3,0,7,NA,2021-03-29T23:19:34Z
+Under investigation,0,0,0,0,0,0,0,0,0,NA,2021-03-29T23:19:34Z
+Tests in last 7 days,265275,3068,62008,6343,56311,18227,4051,98483,16784,NA,2021-03-29T23:19:34Z
+"Tests in last 7 days per 100,000 population",1046,720,767,2577,1106,1040,758,1494,640,NA,2021-03-29T23:19:34Z
+Total tests conducted,15483555,185578,5324548,148419,2147661,1166599,189955,5382784,938011,NA,2021-03-29T23:19:34Z
+Total positive tests (%),0.2,0.1,0.1,0.1,0.1,0.1,0.1,0.4,0.1,NA,2021-03-29T23:19:34Z
