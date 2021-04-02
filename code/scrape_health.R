@@ -42,37 +42,16 @@ health <- "https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-n
 scrape_dt <- lubridate::now(tzone = "Australia/Sydney")
 
 
-# orig chromever
-# args = 'datafile where name="C:\\\\Program Files (x86)\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe" get Version /value'
+
 remote_driver <- RSelenium::remoteDriver(remoteServerAddr = "selenium", # need to set this to the name of the service in docker, ie not localhost
                                          port = 4444L,
                                          browserName = "chrome")
 remote_driver$open()
 
-# 
-# driver <- RSelenium::rsDriver(browser = "chrome",
-#                               chromever =
-#                                 system2(command = "wmic",
-#                                         args = 'datafile where name="C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe" get Version /value',
-#                                         stdout = TRUE,
-#                                         stderr = TRUE) %>%
-#                                 stringr::str_extract(pattern = "(?<=Version=)\\d+\\.\\d+\\.\\d+\\.") %>%
-#                                 magrittr::extract(!is.na(.)) %>%
-#                                 stringr::str_replace_all(pattern = "\\.",
-#                                                          replacement = "\\\\.") %>%
-#                                 paste0("^",  .) %>%
-#                                 stringr::str_subset(string =
-#                                                       binman::list_versions(appname = "chromedriver") %>%
-#                                                       dplyr::last()) %>%
-#                                 as.numeric_version() %>%
-#                                 max() %>%
-#                                 as.character())
 
-Sys.sleep(25)
-# remote_driver <- driver[["client"]]
-# Sys.sleep(5)
+Sys.sleep(35)
 remote_driver$navigate(health)
-Sys.sleep(15)
+Sys.sleep(30)
 remote_driver$switchToFrame(NULL)
 doc = xml2::read_html(remote_driver$getPageSource()[[1]])
 
@@ -89,7 +68,7 @@ tests <- rvest::html_table(doc)[[3]]
 
 # Stop selenium
 try(remote_driver$quit())
-try(driver$server$stop())
+try(remote_driver$server$stop())
 try(system("taskkill /im java.exe /f", intern=FALSE, ignore.stdout=FALSE))
 
 # Tidy data

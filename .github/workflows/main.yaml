@@ -5,18 +5,14 @@ name: scrape_health
 on:
   schedule:
     - cron: "0 23 * * */1" # every day at 10am (2300 UTC)
-
-
-    
-# on:
-#   push:
-#     branches:
-#       - main
-#       - master
-#   pull_request:
-#     branches:
-#       - main
-#       - master
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
 
 jobs:
   scrape_health:
