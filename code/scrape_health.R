@@ -36,15 +36,37 @@ tidy_health <- function(.data) {
                 values_from = value)
 }
 
+get_os <- function(){
+  sysinf <- Sys.info()
+  if (!is.null(sysinf)){
+    os <- sysinf['sysname']
+    if (os == 'Darwin')
+      os <- "osx"
+  } else { ## mystery machine
+    os <- .Platform$OS.type
+    if (grepl("^darwin", R.version$os))
+      os <- "osx"
+    if (grepl("linux-gnu", R.version$os))
+      os <- "linux"
+  }
+  tolower(os)
+}
+
+# Setup the driver and connection ----
+os <- get_os()
 
 health <- "https://www.health.gov.au/news/health-alerts/novel-coronavirus-2019-ncov-health-alert/coronavirus-covid-19-current-situation-and-case-numbers"
 
 scrape_dt <- lubridate::now(tzone = "Australia/Sydney")
 
+server_address = if_else(os == "windows",
+                         "localhost", "selenium")
 
+server_port = if_else(os == "windows",
+                      4445L, 4444L)
 
-remote_driver <- RSelenium::remoteDriver(remoteServerAddr = "selenium", # need to set this to the name of the service in docker, ie not localhost
-                                         port = 4444L,
+remote_driver <- RSelenium::remoteDriver(remoteServerAddr = server_address, # need to set this to the name of the service in docker, ie not localhost
+                                         port = server_port, # change this back to 4444L
                                          browserName = "chrome")
 remote_driver$open()
 
@@ -55,6 +77,7 @@ Sys.sleep(30)
 remote_driver$switchToFrame(NULL)
 doc = xml2::read_html(remote_driver$getPageSource()[[1]])
 
+# Extract the tables ----
 health_date <- doc %>% 
   rvest::html_nodes("h2") %>% 
   magrittr::extract2(15) %>% 
@@ -66,12 +89,25 @@ new <- rvest::html_table(doc)[[1]]
 soi <- rvest::html_table(doc)[[2]]
 tests <- rvest::html_table(doc)[[3]]
 
-# Stop selenium
+
+# OCR the hospital data ----
+# ybCdZWz
+hosp_image_location <- remote_driver$findElement(using = "id",
+                                        'ybCdZWz')
+
+remote_driver$mouseMoveToLocation(webElement = hosp_image_location)
+remote_driver$click()
+remote_driver$screenshot(file = "hosp_chart_raw.png")
+
+
+
+
+# Stop selenium ----
 try(remote_driver$quit())
 try(remote_driver$server$stop())
 try(system("taskkill /im java.exe /f", intern=FALSE, ignore.stdout=FALSE))
 
-# Tidy data
+# Tidy data ----
 scraped_health_data <- list(new, soi, tests) %>% 
   purrr::map_dfr(tidy_health) %>% 
   dplyr::mutate(reported_date = health_date,
