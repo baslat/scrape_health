@@ -90,15 +90,17 @@ soi <- rvest::html_table(doc)[[2]]
 tests <- rvest::html_table(doc)[[3]]
 
 
-# OCR the hospital data ----
-# ybCdZWz
-hosp_image_location <- remote_driver$findElement(using = "id",
-                                        'ybCdZWz')
-
-remote_driver$mouseMoveToLocation(webElement = hosp_image_location)
-remote_driver$click()
-remote_driver$screenshot(file = "hosp_chart_raw.png")
-
+# # OCR the hospital data ----
+# # ybCdZWz
+# hosp_image_location <- remote_driver$findElement(using = "id",
+#                                         'ybCdZWz')
+# 
+# remote_driver$mouseMoveToLocation(webElement = hosp_image_location)
+# # remote_driver$sendKeysToActiveElement(list(key = "ctrl", "="))
+# 
+# remote_driver$click()
+# remote_driver$screenshot(file = "hosp_chart_raw.png")
+# chart <- remote_driver$screenshot()
 
 
 
