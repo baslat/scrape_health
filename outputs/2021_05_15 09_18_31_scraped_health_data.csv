@@ -1,0 +1,19 @@
+name,Australia,ACT,NSW,NT,QLD,SA,TAS,VIC,WA,reported_date,scrape_dt
+Active cases,161,0,99,4,15,14,0,18,11,NA,2021-05-14T23:18:31Z
+Locally acquired last 24 hours,0,0,0,0,0,0,0,0,0,NA,2021-05-14T23:18:31Z
+Overseas acquired last 24 hours,2,0,1,0,0,0,0,1,0,NA,2021-05-14T23:18:31Z
+Under investigation last 24 hours,0,0,0,0,0,0,0,0,0,NA,2021-05-14T23:18:31Z
+Locally acquired last 7 days,1,0,0,0,0,0,0,1,0,NA,2021-05-14T23:18:31Z
+Overseas acquired last 7 days,54,0,31,0,7,2,0,12,2,NA,2021-05-14T23:18:31Z
+Under investigation last 7 days,0,0,0,0,0,0,0,0,0,NA,2021-05-14T23:18:31Z
+Overseas,7555,95,3366,163,1257,554,85,1127,908,NA,2021-05-14T23:18:31Z
+Locally acquired - contact of confirmed case,17964,25,1645,2,264,152,141,15649,86,NA,2021-05-14T23:18:31Z
+Locally acquired - unknown contact,4284,1,451,0,41,9,5,3763,14,NA,2021-05-14T23:18:31Z
+Locally acquired - interstate travel,154,3,90,2,23,26,3,0,7,NA,2021-05-14T23:18:31Z
+Under investigation,0,0,0,0,0,0,0,0,0,NA,2021-05-14T23:18:31Z
+Total cases,29957,124,5552,167,1585,741,234,20539,1015,NA,2021-05-14T23:18:31Z
+Total deaths,910,3,54,0,7,4,13,820,9,NA,2021-05-14T23:18:31Z
+Tests in last 7 days,336938,3161,118509,5864,40693,21452,4316,120587,22356,NA,2021-05-14T23:18:31Z
+"Tests in last 7 days per 100,000 population",1329,742,1466,2383,799,1224,807,1829,853,NA,2021-05-14T23:18:31Z
+Total tests,17465839,205384,5837049,189038,2533332,1311185,219531,6035711,1134609,NA,2021-05-14T23:18:31Z
+Total positive tests (%),0.2,0.1,0.1,0.1,0.1,0.1,0.1,0.3,0.1,NA,2021-05-14T23:18:31Z
