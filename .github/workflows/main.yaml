@@ -2,17 +2,17 @@
 name: scrape_health
 
 # Controls when the action will run.
-on:
-  schedule:
-    - cron: "0 23 * * */1" # every day at 10am (2300 UTC)
-  push:
-    branches:
-      - main
-      - master
-  pull_request:
-    branches:
-      - main
-      - master
+# on:
+#   schedule:
+#     - cron: "0 23 * * */1" # every day at 10am (2300 UTC)
+#   push:
+#     branches:
+#       - main
+#       - master
+#   pull_request:
+#     branches:
+#       - main
+#       - master
 
 jobs:
   scrape_health:
